@@ -21,7 +21,7 @@ def youtube_get():
 
     youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, developerKey=DEVELOPER_KEY)
     search_response = youtube.search().list(
-        q="미르방",
+        q="영화 리뷰",
         order="date",
         part="snippet",
         maxResults=30
