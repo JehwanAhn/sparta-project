@@ -1416,6 +1416,9 @@ input[type='checkbox'] {
 	font: 700 1.125rem/1.625rem "Montserrat", sans-serif;
 }
 
+.thumbnail {
+	padding-bottom: 140px;
+}
 
 /**********************************/
 /*     13. Project Lightboxes     */
