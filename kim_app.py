@@ -85,8 +85,8 @@ def get_image_title(url):
             video_list.append(video_url)
 
             # DB에 저장
-            doc={'image_list1': img_url, 'title_list1': title.text, 'play_list1': play_time.text[0:2].strip().rstrip(':'), 'view_list1': view_time.text,'video_list1': video_url }
-            db.movies_review4.insert_one(doc)
+            doc={'image_list1': img_url, 'title_list1': title.text, 'play_list1': int(play_time.text[0:2].strip().rstrip(':')), 'view_list1': view_time.text,'video_list1': video_url }
+            db.movies_review5.insert_one(doc)
 
             print(idx, title.text, img_url, play_time.text[0:2].strip().rstrip(':'), view_time.text, video_url)
 
