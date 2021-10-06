@@ -22,36 +22,49 @@
     <title> 오늘 뭐 보지? </title>
 
     <!-- Styles -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:500,700&display=swap&subset=latin-ext"
-          rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600&display=swap&subset=latin-ext"
-          rel="stylesheet">
-    <link href="../css/bootstrap.css" rel="stylesheet">
-    <link href="../css/fontawesome-all.css" rel="stylesheet">
-    <link href="../css/swiper.css" rel="stylesheet">
-    <link href="../css/magnific-popup.css" rel="stylesheet">
-    <link href="../css/styles.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:500,700&display=swap&subset=latin-ext" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600&display=swap&subset=latin-ext" rel="stylesheet">
+    <link href="../static/css/bootstrap.css" rel="stylesheet">
+    <link href="../static/css/fontawesome-all.css" rel="stylesheet">
+    <link href="../static/css/swiper.css" rel="stylesheet">
+    <link href="../static/css/magnific-popup.css" rel="stylesheet">
+    <link href="../static/css/styles.css" rel="stylesheet">
+<!--    원본 링크 코드-->
+<!--    <link href="../static/css/fontawesome-all.css" rel="stylesheet">-->
+<!--    <link href="../static/css/swiper.css" rel="stylesheet">-->
+<!--    <link href="../static/css/magnific-popup.css" rel="stylesheet">-->
+<!--    <link href="../static/css/styles.css" rel="stylesheet">-->
 
     <!-- Favicon  -->
-    <link rel="icon" href="../images/favicon.png">
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.png')}}" >
+<!--    원본 링크 코드-->
+<!--    <link rel="icon" href="../static/images/favicon.png">-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
     <script>
-        // Load the IFrame Player API code asynchronously.
-        var tag = document.createElement('script');
-        tag.src = "https://www.youtube.com/player_api";
-        var firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+                $.ajax({
+            type: "GET",
+            url: "/youtube",
+            data: {},
+            success: function (response) {
+                let videos = response['all_videos']
+                for (let i = 0; i < videos.length; i++) {
+                    let movie = videos[i]['snippet']['resourceId']['videoId']
 
-        // Replace the 'ytplayer' element with an <iframe> and
-        // YouTube player after the API code downloads.
-        var player;
-
-        function onYouTubePlayerAPIReady() {
-            player = new YT.Player('ytplayer', {
-                height: '392',
-                width: '710',
-                videoId: 'M7lc1UVf-VE'
-            });
-        }
+                    let temp_html = `<iframe width="가로사이즈" height="세로사이즈"
+                                            src="https://www.youtube.com/embed/${movie}?rel=0&amp;loop=1;playlist=${movie}"
+                                            id="player" frameborder="0"></iframe>`
+                    $('#player').append(temp_html)
+                }
+            }
+        });
     </script>
 
 </head>
@@ -74,7 +87,7 @@
     <!-- <a class="navbar-brand logo-text page-scroll" href="index.html">Aria</a> -->
 
     <!-- Image Logo -->
-    <a class="navbar-brand logo-image" href="index.html"> <img src="../images/logo.svg" alt="alternative"></a>
+    <a class="navbar-brand logo-image" href="index.html"> <img src="../static/images/logo.svg" alt="alternative"></a>
 
     <!-- Mobile Menu Toggle Button -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
@@ -158,44 +171,43 @@
                     <div class="element-item development">
                         <a class="popup-with-move-anim" href="#project-1">
                             <div class="element-item-overlay">
-                                <span>#썸네일</span>
                             </div>
                             <img class="thumbnail" url="images/project-1.jpg" alt="alternative"></a>
                     </div>
                     <div class="element-item development">
                         <a class="popup-with-move-anim" href="#project-2">
                             <div class="element-item-overlay"><span>Classic Industry</span></div>
-                            <img src="../images/project-2.jpg" alt="alternative"></a>
+                            <img src="../static/images/project-2.jpg" alt="alternative"></a>
                     </div>
                     <div class="element-item design development marketing">
                         <a class="popup-with-move-anim" href="#project-3">
                             <div class="element-item-overlay"><span>BoomBap Audio</span></div>
-                            <img src="../images/project-3.jpg" alt="alternative"></a>
+                            <img src="../static/images/project-3.jpg" alt="alternative"></a>
                     </div>
                     <div class="element-item design development marketing">
                         <a class="popup-with-move-anim" href="#project-4">
                             <div class="element-item-overlay"><span>Van Moose</span></div>
-                            <img src="../images/project-4.jpg" alt="alternative"></a>
+                            <img src="../static/images/project-4.jpg" alt="alternative"></a>
                     </div>
                     <div class="element-item design development marketing seo">
                         <a class="popup-with-move-anim" href="#project-5">
                             <div class="element-item-overlay"><span>Joy Moments</span></div>
-                            <img src="../images/project-5.jpg" alt="alternative"></a>
+                            <img src="../static/images/project-5.jpg" alt="alternative"></a>
                     </div>
                     <div class="element-item design marketing seo">
                         <a class="popup-with-move-anim" href="#project-6">
                             <div class="element-item-overlay"><span>Spark Events</span></div>
-                            <img src="../images/project-6.jpg" alt="alternative"></a>
+                            <img src="../static/images/project-6.jpg" alt="alternative"></a>
                     </div>
                     <div class="element-item design marketing">
                         <a class="popup-with-move-anim" href="#project-7">
                             <div class="element-item-overlay"><span>Casual Wear</span></div>
-                            <img src="../images/project-7.jpg" alt="alternative"></a>
+                            <img src="../static/images/project-7.jpg" alt="alternative"></a>
                     </div>
                     <div class="element-item design marketing">
                         <a class="popup-with-move-anim" href="#project-8">
                             <div class="element-item-overlay"><span>Zazoo Apps</span></div>
-                            <img src="../images/project-8.jpg" alt="alternative"></a>
+                            <img src="../static/images/project-8.jpg" alt="alternative"></a>
                     </div>
                 </div> <!-- end of grid -->
                 <!-- end of filter -->
@@ -220,9 +232,8 @@
         </div> <!-- end of col -->
         <div>
             <ul>
-                <li class="subscripts">좋아요</li>
-                <li class="viewcount">조회수</li>
-                <li class="comment">코멘트</li>
+                <li class="subscripts">좋아요: 개</li>
+                <li class="viewcount">조회수: 회</li>
             </ul>
 
         </div>
@@ -237,7 +248,7 @@
     <div class="row">
         <button title="Close (Esc)" type="button" class="mfp-close x-button">×</button>
         <div class="col-lg-8">
-            <img class="img-fluid" src="../images/project-2.jpg" alt="alternative">
+            <img class="img-fluid" src="../static/images/project-2.jpg" alt="alternative">
         </div> <!-- end of col -->
         <div class="col-lg-4">
             <h3>Classic Industry</h3>
@@ -264,7 +275,7 @@
     <div class="row">
         <button title="Close (Esc)" type="button" class="mfp-close x-button">×</button>
         <div class="col-lg-8">
-            <img class="img-fluid" src="../images/project-3.jpg" alt="alternative">
+            <img class="img-fluid" src="../static/images/project-3.jpg" alt="alternative">
         </div> <!-- end of col -->
         <div class="col-lg-4">
             <h3>BoomBap Audio</h3>
@@ -291,7 +302,7 @@
     <div class="row">
         <button title="Close (Esc)" type="button" class="mfp-close x-button">×</button>
         <div class="col-lg-8">
-            <img class="img-fluid" src="../images/project-4.jpg" alt="alternative">
+            <img class="img-fluid" src="../static/images/project-4.jpg" alt="alternative">
         </div> <!-- end of col -->
         <div class="col-lg-4">
             <h3>Van Moose</h3>
@@ -318,7 +329,7 @@
     <div class="row">
         <button title="Close (Esc)" type="button" class="mfp-close x-button">×</button>
         <div class="col-lg-8">
-            <img class="img-fluid" src="../images/project-5.jpg" alt="alternative">
+            <img class="img-fluid" src="../static/images/project-5.jpg" alt="alternative">
         </div> <!-- end of col -->
         <div class="col-lg-4">
             <h3>Joy Moments</h3>
@@ -345,7 +356,7 @@
     <div class="row">
         <button title="Close (Esc)" type="button" class="mfp-close x-button">×</button>
         <div class="col-lg-8">
-            <img class="img-fluid" src="../images/project-6.jpg" alt="alternative">
+            <img class="img-fluid" src="../static/images/project-6.jpg" alt="alternative">
         </div> <!-- end of col -->
         <div class="col-lg-4">
             <h3>Spark Events</h3>
@@ -372,7 +383,7 @@
     <div class="row">
         <button title="Close (Esc)" type="button" class="mfp-close x-button">×</button>
         <div class="col-lg-8">
-            <img class="img-fluid" src="../images/project-7.jpg" alt="alternative">
+            <img class="img-fluid" src="../static/images/project-7.jpg" alt="alternative">
         </div> <!-- end of col -->
         <div class="col-lg-4">
             <h3>Casual Wear</h3>
@@ -399,7 +410,7 @@
     <div class="row">
         <button title="Close (Esc)" type="button" class="mfp-close x-button">×</button>
         <div class="col-lg-8">
-            <img class="img-fluid" src="../images/project-8.jpg" alt="alternative">
+            <img class="img-fluid" src="../static/images/project-8.jpg" alt="alternative">
         </div> <!-- end of col -->
         <div class="col-lg-4">
             <h3>Zazoo Apps</h3>
@@ -502,15 +513,15 @@
 
 
 <!-- Scripts -->
-<script src="../js/jquery.min.js"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
-<script src="../js/popper.min.js"></script> <!-- Popper tooltip library for Bootstrap -->
-<script src="../js/bootstrap.min.js"></script> <!-- Bootstrap framework -->
-<script src="../js/jquery.easing.min.js"></script> <!-- jQuery Easing for smooth scrolling between anchors -->
-<script src="../js/swiper.min.js"></script> <!-- Swiper for image and text sliders -->
-<script src="../js/jquery.magnific-popup.js"></script> <!-- Magnific Popup for lightboxes -->
-<script src="../js/morphext.min.js"></script> <!-- Morphtext rotating text in the header -->
-<script src="../js/isotope.pkgd.min.js"></script> <!-- Isotope for filter -->
-<script src="../js/validator.min.js"></script> <!-- Validator.js - Bootstrap plugin that validates forms -->
-<script src="../js/scripts.js"></script> <!-- Custom scripts -->
+<script src="../static/js/jquery.min.js"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
+<script src="../static/js/popper.min.js"></script> <!-- Popper tooltip library for Bootstrap -->
+<script src="../static/js/bootstrap.min.js"></script> <!-- Bootstrap framework -->
+<script src="../static/js/jquery.easing.min.js"></script> <!-- jQuery Easing for smooth scrolling between anchors -->
+<script src="../static/js/swiper.min.js"></script> <!-- Swiper for image and text sliders -->
+<script src="../static/js/jquery.magnific-popup.js"></script> <!-- Magnific Popup for lightboxes -->
+<script src="../static/js/morphext.min.js"></script> <!-- Morphtext rotating text in the header -->
+<script src="../static/js/isotope.pkgd.min.js"></script> <!-- Isotope for filter -->
+<script src="../static/js/validator.min.js"></script> <!-- Validator.js - Bootstrap plugin that validates forms -->
+<script src="../static/js/scripts.js"></script> <!-- Custom scripts -->
 </body>
 </html>
