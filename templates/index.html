@@ -22,26 +22,28 @@
     <title> 오늘 뭐 보지? </title>
 
     <!-- Styles -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:500,700&display=swap&subset=latin-ext" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600&display=swap&subset=latin-ext" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:500,700&display=swap&subset=latin-ext"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600&display=swap&subset=latin-ext"
+          rel="stylesheet">
     <link href="../static/css/bootstrap.css" rel="stylesheet">
     <link href="../static/css/fontawesome-all.css" rel="stylesheet">
     <link href="../static/css/swiper.css" rel="stylesheet">
     <link href="../static/css/magnific-popup.css" rel="stylesheet">
     <link href="../static/css/styles.css" rel="stylesheet">
-<!--    원본 링크 코드-->
-<!--    <link href="../static/css/fontawesome-all.css" rel="stylesheet">-->
-<!--    <link href="../static/css/swiper.css" rel="stylesheet">-->
-<!--    <link href="../static/css/magnific-popup.css" rel="stylesheet">-->
-<!--    <link href="../static/css/styles.css" rel="stylesheet">-->
+    <!--    원본 링크 코드-->
+    <!--    <link href="../static/css/fontawesome-all.css" rel="stylesheet">-->
+    <!--    <link href="../static/css/swiper.css" rel="stylesheet">-->
+    <!--    <link href="../static/css/magnific-popup.css" rel="stylesheet">-->
+    <!--    <link href="../static/css/styles.css" rel="stylesheet">-->
 
     <!-- Favicon  -->
-    <link rel="icon" href="{{ url_for('static', filename='images/favicon.png')}}" >
-<!--    원본 링크 코드-->
-<!--    <link rel="icon" href="../static/images/favicon.png">-->
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.png')}}">
+    <!--    원본 링크 코드-->
+    <!--    <link rel="icon" href="../static/images/favicon.png">-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
             integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
             crossorigin="anonymous"></script>
@@ -49,19 +51,23 @@
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
     <script>
-                $.ajax({
+        $.ajax({
             type: "GET",
             url: "/youtube",
             data: {},
             success: function (response) {
                 let videos = response['all_videos']
-                for (let i = 0; i < videos.length; i++) {
-                    let movie = videos[i]['snippet']['resourceId']['videoId']
+                for (let t = 0; t < videos.length; t++) {
+                    for (let i = 0; i < videos.length; i++) {
+                        let movie = videos[i][t]['snippet']['resourceId']['videoId']
 
-                    let temp_html = `<iframe width="가로사이즈" height="세로사이즈"
+                        console.log(movie)
+
+                        let temp_html = `<iframe width="300px" height="200px"
                                             src="https://www.youtube.com/embed/${movie}?rel=0&amp;loop=1;playlist=${movie}"
                                             id="player" frameborder="0"></iframe>`
-                    $('#player').append(temp_html)
+                        $('#player').append(temp_html)
+                    }
                 }
             }
         });
@@ -168,7 +174,7 @@
 
                 </div> <!-- end of button group -->
                 <div class="grid">
-                    <div class="element-item development">
+                    <div class="element-item development" id="player">
                         <a class="popup-with-move-anim" href="#project-1">
                             <div class="element-item-overlay">
                             </div>
@@ -237,7 +243,8 @@
             </ul>
 
         </div>
-        <a class="btn-solid-reg" href="#your-link">링크</a> <a class="btn-outline-reg mfp-close as-button" href="#projects">뒤로가기</a>
+        <a class="btn-solid-reg" href="#your-link">링크</a> <a class="btn-outline-reg mfp-close as-button"
+                                                             href="#projects">뒤로가기</a>
     </div> <!-- end of col -->
 </div> <!-- end of row -->
 </div> <!-- end of lightbox-basic -->
@@ -445,54 +452,54 @@
                     <p class="white">팀원 윤만식 김영훈 김호 김나연</p>
                 </div> <!-- end of text-container -->
             </div> <!-- end of col -->
-<!--            <div class="col-md-2">-->
-<!--                <div class="text-container">-->
-<!--                    <h4>Links</h4>-->
-<!--                    <ul class="list-unstyled li-space-lg white">-->
-<!--                        <li>-->
-<!--                            <a class="white" href="#your-link">startupguide.com</a>-->
-<!--                        </li>-->
-<!--                        <li>-->
-<!--                            <a class="white" href="terms-conditions.html">Terms & Conditions</a>-->
-<!--                        </li>-->
-<!--                        <li>-->
-<!--                            <a class="white" href="privacy-policy.html">Privacy Policy</a>-->
-<!--                        </li>-->
-<!--                    </ul>-->
-<!--                </div> &lt;!&ndash; end of text-container &ndash;&gt;-->
-<!--            </div> &lt;!&ndash; end of col &ndash;&gt;-->
-<!--            <div class="col-md-2">-->
-<!--                <div class="text-container">-->
-<!--                    <h4>Tools</h4>-->
-<!--                    <ul class="list-unstyled li-space-lg">-->
-<!--                        <li>-->
-<!--                            <a class="white" href="#your-link">businessgrowth.com</a>-->
-<!--                        </li>-->
-<!--                        <li>-->
-<!--                            <a class="white" href="#your-link">influencers.com</a>-->
-<!--                        </li>-->
-<!--                        <li class="media">-->
-<!--                            <a class="white" href="#your-link">optimizer.net</a>-->
-<!--                        </li>-->
-<!--                    </ul>-->
-<!--                </div> &lt;!&ndash; end of text-container &ndash;&gt;-->
-<!--            </div> &lt;!&ndash; end of col &ndash;&gt;-->
-<!--            <div class="col-md-2">-->
-<!--                <div class="text-container">-->
-<!--                    <h4>Partners</h4>-->
-<!--                    <ul class="list-unstyled li-space-lg">-->
-<!--                        <li>-->
-<!--                            <a class="white" href="#your-link">unicorns.com</a>-->
-<!--                        </li>-->
-<!--                        <li>-->
-<!--                            <a class="white" href="#your-link">staffmanager.com</a>-->
-<!--                        </li>-->
-<!--                        <li>-->
-<!--                            <a class="white" href="#your-link">association.gov</a>-->
-<!--                        </li>-->
-<!--                    </ul>-->
-<!--                </div> &lt;!&ndash; end of text-container &ndash;&gt;-->
-<!--            </div> &lt;!&ndash; end of col &ndash;&gt;-->
+            <!--            <div class="col-md-2">-->
+            <!--                <div class="text-container">-->
+            <!--                    <h4>Links</h4>-->
+            <!--                    <ul class="list-unstyled li-space-lg white">-->
+            <!--                        <li>-->
+            <!--                            <a class="white" href="#your-link">startupguide.com</a>-->
+            <!--                        </li>-->
+            <!--                        <li>-->
+            <!--                            <a class="white" href="terms-conditions.html">Terms & Conditions</a>-->
+            <!--                        </li>-->
+            <!--                        <li>-->
+            <!--                            <a class="white" href="privacy-policy.html">Privacy Policy</a>-->
+            <!--                        </li>-->
+            <!--                    </ul>-->
+            <!--                </div> &lt;!&ndash; end of text-container &ndash;&gt;-->
+            <!--            </div> &lt;!&ndash; end of col &ndash;&gt;-->
+            <!--            <div class="col-md-2">-->
+            <!--                <div class="text-container">-->
+            <!--                    <h4>Tools</h4>-->
+            <!--                    <ul class="list-unstyled li-space-lg">-->
+            <!--                        <li>-->
+            <!--                            <a class="white" href="#your-link">businessgrowth.com</a>-->
+            <!--                        </li>-->
+            <!--                        <li>-->
+            <!--                            <a class="white" href="#your-link">influencers.com</a>-->
+            <!--                        </li>-->
+            <!--                        <li class="media">-->
+            <!--                            <a class="white" href="#your-link">optimizer.net</a>-->
+            <!--                        </li>-->
+            <!--                    </ul>-->
+            <!--                </div> &lt;!&ndash; end of text-container &ndash;&gt;-->
+            <!--            </div> &lt;!&ndash; end of col &ndash;&gt;-->
+            <!--            <div class="col-md-2">-->
+            <!--                <div class="text-container">-->
+            <!--                    <h4>Partners</h4>-->
+            <!--                    <ul class="list-unstyled li-space-lg">-->
+            <!--                        <li>-->
+            <!--                            <a class="white" href="#your-link">unicorns.com</a>-->
+            <!--                        </li>-->
+            <!--                        <li>-->
+            <!--                            <a class="white" href="#your-link">staffmanager.com</a>-->
+            <!--                        </li>-->
+            <!--                        <li>-->
+            <!--                            <a class="white" href="#your-link">association.gov</a>-->
+            <!--                        </li>-->
+            <!--                    </ul>-->
+            <!--                </div> &lt;!&ndash; end of text-container &ndash;&gt;-->
+            <!--            </div> &lt;!&ndash; end of col &ndash;&gt;-->
         </div> <!-- end of row -->
     </div> <!-- end of container -->
 </div> <!-- end of footer -->
