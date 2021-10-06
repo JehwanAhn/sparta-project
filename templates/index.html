@@ -19,7 +19,7 @@
     <meta property="og:type" content="article"/>
 
     <!-- Website Title -->
-    <title> 오늘 뭐 보지? </title>
+    <title> 시간순삭 영화리뷰 </title>
 
     <!-- Styles -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:500,700&display=swap&subset=latin-ext" rel="stylesheet">
@@ -36,27 +36,35 @@
 <!--    <link href="../static/css/styles.css" rel="stylesheet">-->
 
     <!-- Favicon  -->
-    <link rel="icon" href="{{ url_for('static', filename='images/favicon.png')}}" >
+    <link rel="icon" href="../static/images/favicon.png')}}">
 <!--    원본 링크 코드-->
 <!--    <link rel="icon" href="../static/images/favicon.png">-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
     <script>
-        // Load the IFrame Player API code asynchronously.
-        var tag = document.createElement('script');
-        tag.src = "https://www.youtube.com/player_api";
-        var firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-        // Replace the 'ytplayer' element with an <iframe> and
-        // YouTube player after the API code downloads.
-        var player;
-
-        function onYouTubePlayerAPIReady() {
-            player = new YT.Player('ytplayer', {
-                height: '392',
-                width: '710',
-                videoId: 'M7lc1UVf-VE'
-            });
-        }
+                $.ajax({
+            type: "GET",
+            url: "/youtube",
+            data: {},
+            success: function (response) {
+                let videos = response['all_videos']
+                for (let i = 0; i < videos.length; i++) {
+                    let movie = videos[i]['snippet']['resourceId']['videoId']
+                    console.log(movie)
+                    let temp_html = `<iframe width="가로사이즈" height="세로사이즈"
+                                            src="https://www.youtube.com/embed/${movie}?rel=0&amp;loop=1;playlist=${movie}"
+                                            id="player" frameborder="0"></iframe>`
+                    $('#player').append(temp_html)
+                }
+            }
+        });
     </script>
 
 </head>
@@ -79,7 +87,7 @@
     <!-- <a class="navbar-brand logo-text page-scroll" href="index.html">Aria</a> -->
 
     <!-- Image Logo -->
-    <a class="navbar-brand logo-image" href="http://52.78.14.172:5000/"> <img src="../static/images/logo.svg" alt="alternative"></a>
+    <a class="navbar-brand logo-image" href="index.html"> <img src="../static/images/vvv.png" alt="alternative"></a>
 
     <!-- Mobile Menu Toggle Button -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
@@ -98,21 +106,7 @@
                 <a class="nav-link page-scroll" href="#projects">시간대 선택</a>
             </li>
 
-            <!-- Dropdown Menu -->
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle page-scroll" href="#about" id="navbarDropdown" role="button"
-                   aria-haspopup="true" aria-expanded="false">써먹을데없음</a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="terms-conditions.html"><span class="item-text">페이지1</span></a>
-                    <div class="dropdown-items-divide-hr"></div>
-                    <a class="dropdown-item" href="privacy-policy.html"><span class="item-text">페이지2</span></a>
-                </div>
-            </li>
-            <!-- end of dropdown menu -->
 
-            <li class="nav-item">
-                <a class="nav-link page-scroll" href="#contact">써먹을데없음22</a>
-            </li>
         </ul>
 
     </div>
@@ -127,10 +121,9 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="text-container">
-                        <h1><span id="js-rotating">아 뭐 보지, 뭐 볼거 없나, 어디서 찾지</span></h1>
-                        <p class="p-heading p-large">"영화를 좋아하는 당신! 무엇을 볼지 모르겠다구요? 리뷰를 보면서 무엇을 볼지 정해보세요! 저희가 시간대 별로 정리해
-                            봤어요! 우리의 시간은 소중하니까요 ㅎㅎ"라는 식으로 코멘트를 달거에요.</p>
-                        <a class="btn-solid-lg page-scroll" href="#projects">find a view</a>
+                        <h1><span id="js-rotating">시간순삭, 영화리뷰</span></h1>
+                        <p class="p-heading p-large">영화를 좋아하는 당신! 하지만 정주행 하기에는 시간이 부족하신가요? 영화를 빠르게 정독하고 싶을 때, 당신이 찾는 바로 그 영화리뷰!</p>
+                        <a class="btn-solid-lg page-scroll" href="#projects">FIND A VIEW</a>
                     </div>
                 </div> <!-- end of col -->
             </div> <!-- end of row -->
@@ -145,7 +138,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <div class="section-title">시간별</div>
+
                 <h2>당신의 시간을 선택해주세요!</h2>
             </div> <!-- end of col -->
         </div> <!-- end of row -->
@@ -163,9 +156,9 @@
                     <div class="element-item development">
                         <a class="popup-with-move-anim" href="#project-1">
                             <div class="element-item-overlay">
-                                <span>#썸네일</span>
+                                <span>#샘플카드</span>
                             </div>
-                            <img class="thumbnail" url="images/project-1.jpg" alt="alternative"></a>
+                            <img class="thumbnail" url="../static/images/project-1.jpg" alt="alternative"></a>
                     </div>
                     <div class="element-item development">
                         <a class="popup-with-move-anim" href="#project-2">
@@ -221,8 +214,9 @@
             <h3>$title</h3>
         </div>
         <div class="col-lg-8">
-            <div id="ytplayer"></div>
-        </div> <!-- end of col -->
+            <div id="player"></div>
+        </div>
+         <!-- end of col -->
         <div>
             <ul>
                 <li class="subscripts">좋아요: 개</li>
@@ -433,76 +427,30 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="text-container about">
-                    <h4>6조 소개글</h4>
-                    <p class="white">팀장 안제환</p>
-                    <p class="white">팀원 윤만식 김영훈 김호 김나연</p>
+                    <h4>6조</h4>
+                    <p class="white">팀장｜ 안제환</p>
+                    <p class="white">팀원｜ 윤만식 김영훈 김호 김나연</p>
                 </div> <!-- end of text-container -->
             </div> <!-- end of col -->
-<!--            <div class="col-md-2">-->
-<!--                <div class="text-container">-->
-<!--                    <h4>Links</h4>-->
-<!--                    <ul class="list-unstyled li-space-lg white">-->
-<!--                        <li>-->
-<!--                            <a class="white" href="#your-link">startupguide.com</a>-->
-<!--                        </li>-->
-<!--                        <li>-->
-<!--                            <a class="white" href="terms-conditions.html">Terms & Conditions</a>-->
-<!--                        </li>-->
-<!--                        <li>-->
-<!--                            <a class="white" href="privacy-policy.html">Privacy Policy</a>-->
-<!--                        </li>-->
-<!--                    </ul>-->
-<!--                </div> &lt;!&ndash; end of text-container &ndash;&gt;-->
-<!--            </div> &lt;!&ndash; end of col &ndash;&gt;-->
-<!--            <div class="col-md-2">-->
-<!--                <div class="text-container">-->
-<!--                    <h4>Tools</h4>-->
-<!--                    <ul class="list-unstyled li-space-lg">-->
-<!--                        <li>-->
-<!--                            <a class="white" href="#your-link">businessgrowth.com</a>-->
-<!--                        </li>-->
-<!--                        <li>-->
-<!--                            <a class="white" href="#your-link">influencers.com</a>-->
-<!--                        </li>-->
-<!--                        <li class="media">-->
-<!--                            <a class="white" href="#your-link">optimizer.net</a>-->
-<!--                        </li>-->
-<!--                    </ul>-->
-<!--                </div> &lt;!&ndash; end of text-container &ndash;&gt;-->
-<!--            </div> &lt;!&ndash; end of col &ndash;&gt;-->
-<!--            <div class="col-md-2">-->
-<!--                <div class="text-container">-->
-<!--                    <h4>Partners</h4>-->
-<!--                    <ul class="list-unstyled li-space-lg">-->
-<!--                        <li>-->
-<!--                            <a class="white" href="#your-link">unicorns.com</a>-->
-<!--                        </li>-->
-<!--                        <li>-->
-<!--                            <a class="white" href="#your-link">staffmanager.com</a>-->
-<!--                        </li>-->
-<!--                        <li>-->
-<!--                            <a class="white" href="#your-link">association.gov</a>-->
-<!--                        </li>-->
-<!--                    </ul>-->
-<!--                </div> &lt;!&ndash; end of text-container &ndash;&gt;-->
-<!--            </div> &lt;!&ndash; end of col &ndash;&gt;-->
+            <div class="col-md-2">
+
+            </div> <!-- end of col -->
+            <div class="col-md-2">
+                <div class="text-container">
+                    <h4>템플릿 출처</h4>
+                    <ul class="list-unstyled li-space-lg">
+                        <li>
+                            <a class="white"
+                               href="https://www.free-css.com/free-css-templates/page259/aria">바로가기</a>
+                        </li>
+                    </ul>
+                </div> <!-- end of text-container -->
+
+            </div> <!-- end of col -->
         </div> <!-- end of row -->
     </div> <!-- end of container -->
 </div> <!-- end of footer -->
 <!-- end of footer -->
-
-
-<!-- Copyright -->
-<div class="copyright">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <p class="p-small">Copyright © 2020 <a href="https://inovatik.com">Template by Inovatik</a></p>
-            </div> <!-- end of col -->
-        </div> <!-- enf of row -->
-    </div> <!-- end of container -->
-</div> <!-- end of copyright -->
-<!-- end of copyright -->
 
 
 <!-- Scripts -->

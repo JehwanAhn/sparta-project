@@ -2,38 +2,31 @@ from flask import Flask, render_template, jsonify, request
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 from oauth2client.tools import argparser
-
 app = Flask(__name__)
 
 @app.route('/')
 def home():
     return render_template('index.html')
 
-@app.route('/video')
-def sub():
-    return render_template('sub1.html')
-
 @app.route('/youtube', methods=['GET'])
 def youtube_get():
-    DEVELOPER_KEY = "AIzaSyDtpUpeVe3BiMoW2c-WHhOLknfx6Ce9KQo"
-    YOUTUBE_API_SERVICE_NAME = "youtube"
-    YOUTUBE_API_VERSION = "v3"
+  DEVELOPER_KEY = "AIzaSyDtpUpeVe3BiMoW2c-WHhOLknfx6Ce9KQo"
+  YOUTUBE_API_SERVICE_NAME = "youtube"
+  YOUTUBE_API_VERSION = "v3"
+  youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, developerKey=DEVELOPER_KEY)
 
-    youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, developerKey=DEVELOPER_KEY)
-    search_response = youtube.search().list(
-        q="영화 리뷰",
-        order="date",
-        part="snippet",
-        maxResults=30
-    ).execute()
+  videos = []
+  cm = youtube.playlistItems().list(
+    playlistId="UUM31rBPQdifQKUmBKtwVqBg",
+    part="snippet",
+    maxResults=10
+  ).execute()
 
-    final_list = []
+  for i in cm['items']:
+    videos.append(i)
 
-    for search_result in search_response.get("items", []):
-        final_list.append(search_result)
-
-    return jsonify(final_list)
-
+  print(videos)
+  return jsonify({'all_videos':videos})
 
 
 if __name__ == '__main__':
