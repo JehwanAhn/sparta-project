@@ -22,26 +22,28 @@
     <title> 시간순삭 영화리뷰 </title>
 
     <!-- Styles -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:500,700&display=swap&subset=latin-ext" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600&display=swap&subset=latin-ext" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:500,700&display=swap&subset=latin-ext"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600&display=swap&subset=latin-ext"
+          rel="stylesheet">
     <link href="../static/css/bootstrap.css" rel="stylesheet">
     <link href="../static/css/fontawesome-all.css" rel="stylesheet">
     <link href="../static/css/swiper.css" rel="stylesheet">
     <link href="../static/css/magnific-popup.css" rel="stylesheet">
     <link href="../static/css/styles.css" rel="stylesheet">
-<!--    원본 링크 코드-->
-<!--    <link href="../static/css/fontawesome-all.css" rel="stylesheet">-->
-<!--    <link href="../static/css/swiper.css" rel="stylesheet">-->
-<!--    <link href="../static/css/magnific-popup.css" rel="stylesheet">-->
-<!--    <link href="../static/css/styles.css" rel="stylesheet">-->
+    <!--    원본 링크 코드-->
+    <!--    <link href="../static/css/fontawesome-all.css" rel="stylesheet">-->
+    <!--    <link href="../static/css/swiper.css" rel="stylesheet">-->
+    <!--    <link href="../static/css/magnific-popup.css" rel="stylesheet">-->
+    <!--    <link href="../static/css/styles.css" rel="stylesheet">-->
 
     <!-- Favicon  -->
-    <link rel="icon" href="../static/images/favicon.png')}}">
-<!--    원본 링크 코드-->
-<!--    <link rel="icon" href="../static/images/favicon.png">-->
+    <link rel="icon" href="../static/images/aaa.png">
+    <!--    원본 링크 코드-->
+    <!--    <link rel="icon" href="../static/images/favicon.png">-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
             integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
             crossorigin="anonymous"></script>
@@ -49,19 +51,35 @@
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
     <script>
-                $.ajax({
+        $.ajax({
             type: "GET",
             url: "/youtube",
             data: {},
             success: function (response) {
                 let videos = response['all_videos']
-                for (let i = 0; i < videos.length; i++) {
-                    let movie = videos[i]['snippet']['resourceId']['videoId']
-                    console.log(movie)
-                    let temp_html = `<iframe width="가로사이즈" height="세로사이즈"
-                                            src="https://www.youtube.com/embed/${movie}?rel=0&amp;loop=1;playlist=${movie}"
-                                            id="player" frameborder="0"></iframe>`
-                    $('#player').append(temp_html)
+                for (let t = 0; t < videos.length; t++) {
+                    for (let i = 0; i < videos.length; i++) {
+                        let thumbnails = videos[i][t]['snippet']['thumbnails']['standard']['url']
+                        let title = videos[i][t]['snippet']['title']
+                        let channeltitle = videos[i][t]['snippet']['channelTitle']
+                        let movie = videos[i][t]['snippet']['resourceId']['videoId']
+                        console.log(thumbnails, title, channeltitle)
+                        let temp_html = `<iframe width="300px" height="200px"
+                                        src="https://www.youtube.com/embed/${movie}?rel=0&amp;loop=1;playlist=${movie}"
+                                        id="player" frameborder="0"></iframe>`
+                        $('#player').append(temp_html)
+                        let temp_html_1 =  `<div class="element-item development">
+                                                <a class="popup-with-move-anim" href="#project-1">
+                                                    <div class="element-item-overlay">
+                                                        <span>${title}</span>
+                                                    </div>
+                                                    <img class="thumbnail" scr="${thumbnails}" alt="video thumbnails"></a>
+                                            </div>`
+
+                        $('#player_1').append(temp_html_1)
+
+
+                    }
                 }
             }
         });
@@ -87,7 +105,7 @@
     <!-- <a class="navbar-brand logo-text page-scroll" href="index.html">Aria</a> -->
 
     <!-- Image Logo -->
-    <a class="navbar-brand logo-image" href="index.html"> <img src="../static/images/vvv.png" alt="alternative"></a>
+    <a class="navbar-brand logo-image" href="body"> <img src="../static/images/vvv.png" alt="alternative"></a>
 
     <!-- Mobile Menu Toggle Button -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
@@ -122,7 +140,8 @@
                 <div class="col-lg-12">
                     <div class="text-container">
                         <h1><span id="js-rotating">시간순삭, 영화리뷰</span></h1>
-                        <p class="p-heading p-large">영화를 좋아하는 당신! 하지만 정주행 하기에는 시간이 부족하신가요? 영화를 빠르게 정독하고 싶을 때, 당신이 찾는 바로 그 영화리뷰!</p>
+                        <p class="p-heading p-large">영화를 좋아하는 당신! 하지만 정주행 하기에는 시간이 부족하신가요? 영화를 빠르게 정독하고 싶을 때, 당신이 찾는 바로
+                            그 영화리뷰!</p>
                         <a class="btn-solid-lg page-scroll" href="#projects">FIND A VIEW</a>
                     </div>
                 </div> <!-- end of col -->
@@ -138,8 +157,9 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-
-                <h2>당신의 시간을 선택해주세요!</h2>
+                <h2>
+                    <div class="test">당신의 시간을 선택해주세요!</div>
+                </h2>
             </div> <!-- end of col -->
         </div> <!-- end of row -->
         <div class="row">
@@ -153,48 +173,14 @@
 
                 </div> <!-- end of button group -->
                 <div class="grid">
-                    <div class="element-item development">
+                    <div class="element-item development" id="player_1">
                         <a class="popup-with-move-anim" href="#project-1">
                             <div class="element-item-overlay">
-                                <span>#샘플카드</span>
+                                <span>$title</span>
                             </div>
-                            <img class="thumbnail" url="../static/images/project-1.jpg" alt="alternative"></a>
+                            <img class="thumbnail" alt="video thumbnails"></a>
                     </div>
-                    <div class="element-item development">
-                        <a class="popup-with-move-anim" href="#project-2">
-                            <div class="element-item-overlay"><span>Classic Industry</span></div>
-                            <img src="../static/images/project-2.jpg" alt="alternative"></a>
-                    </div>
-                    <div class="element-item design development marketing">
-                        <a class="popup-with-move-anim" href="#project-3">
-                            <div class="element-item-overlay"><span>BoomBap Audio</span></div>
-                            <img src="../static/images/project-3.jpg" alt="alternative"></a>
-                    </div>
-                    <div class="element-item design development marketing">
-                        <a class="popup-with-move-anim" href="#project-4">
-                            <div class="element-item-overlay"><span>Van Moose</span></div>
-                            <img src="../static/images/project-4.jpg" alt="alternative"></a>
-                    </div>
-                    <div class="element-item design development marketing seo">
-                        <a class="popup-with-move-anim" href="#project-5">
-                            <div class="element-item-overlay"><span>Joy Moments</span></div>
-                            <img src="../static/images/project-5.jpg" alt="alternative"></a>
-                    </div>
-                    <div class="element-item design marketing seo">
-                        <a class="popup-with-move-anim" href="#project-6">
-                            <div class="element-item-overlay"><span>Spark Events</span></div>
-                            <img src="../static/images/project-6.jpg" alt="alternative"></a>
-                    </div>
-                    <div class="element-item design marketing">
-                        <a class="popup-with-move-anim" href="#project-7">
-                            <div class="element-item-overlay"><span>Casual Wear</span></div>
-                            <img src="../static/images/project-7.jpg" alt="alternative"></a>
-                    </div>
-                    <div class="element-item design marketing">
-                        <a class="popup-with-move-anim" href="#project-8">
-                            <div class="element-item-overlay"><span>Zazoo Apps</span></div>
-                            <img src="../static/images/project-8.jpg" alt="alternative"></a>
-                    </div>
+
                 </div> <!-- end of grid -->
                 <!-- end of filter -->
 
@@ -216,7 +202,7 @@
         <div class="col-lg-8">
             <div id="player"></div>
         </div>
-         <!-- end of col -->
+        <!-- end of col -->
         <div>
             <ul>
                 <li class="subscripts">좋아요: 개</li>
@@ -224,7 +210,8 @@
             </ul>
 
         </div>
-        <a class="btn-solid-reg" href="#your-link">링크</a> <a class="btn-outline-reg mfp-close as-button" href="#projects">뒤로가기</a>
+        <a class="btn-solid-reg" href="#your-link">링크</a> <a class="btn-outline-reg mfp-close as-button"
+                                                             href="#projects">뒤로가기</a>
     </div> <!-- end of col -->
 </div> <!-- end of row -->
 </div> <!-- end of lightbox-basic -->
