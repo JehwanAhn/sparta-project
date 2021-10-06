@@ -39,24 +39,32 @@
     <link rel="icon" href="{{ url_for('static', filename='images/favicon.png')}}" >
 <!--    원본 링크 코드-->
 <!--    <link rel="icon" href="../static/images/favicon.png">-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
     <script>
-        // Load the IFrame Player API code asynchronously.
-        var tag = document.createElement('script');
-        tag.src = "https://www.youtube.com/player_api";
-        var firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+                $.ajax({
+            type: "GET",
+            url: "/youtube",
+            data: {},
+            success: function (response) {
+                let videos = response['all_videos']
+                for (let i = 0; i < videos.length; i++) {
+                    let movie = videos[i]['snippet']['resourceId']['videoId']
 
-        // Replace the 'ytplayer' element with an <iframe> and
-        // YouTube player after the API code downloads.
-        var player;
-
-        function onYouTubePlayerAPIReady() {
-            player = new YT.Player('ytplayer', {
-                height: '392',
-                width: '710',
-                videoId: 'M7lc1UVf-VE'
-            });
-        }
+                    let temp_html = `<iframe width="가로사이즈" height="세로사이즈"
+                                            src="https://www.youtube.com/embed/${movie}?rel=0&amp;loop=1;playlist=${movie}"
+                                            id="player" frameborder="0"></iframe>`
+                    $('#player').append(temp_html)
+                }
+            }
+        });
     </script>
 
 </head>
@@ -163,7 +171,6 @@
                     <div class="element-item development">
                         <a class="popup-with-move-anim" href="#project-1">
                             <div class="element-item-overlay">
-                                <span>#썸네일</span>
                             </div>
                             <img class="thumbnail" url="images/project-1.jpg" alt="alternative"></a>
                     </div>
