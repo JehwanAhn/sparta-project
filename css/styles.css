@@ -1416,6 +1416,9 @@ input[type='checkbox'] {
 	font: 700 1.125rem/1.625rem "Montserrat", sans-serif;
 }
 
+.thumbnail {
+	padding-bottom: 140px;
+}
 
 /**********************************/
 /*     13. Project Lightboxes     */
@@ -1471,6 +1474,8 @@ input[type='checkbox'] {
 .lightbox-basic .btn-outline-reg {
 	margin-right: 0.375rem;
 	margin-bottom: 1rem;
+	margin-top: 360px;
+
 }
 
 .lightbox-basic a.mfp-close.as-button {
