@@ -1550,17 +1550,22 @@ input[type='checkbox'] {
 }
 
 .player {
-	width: 900px;
-	height: 450px;
+	box-sizing : content-box;
 }
 
 .col-lg-4 {
-	width: auto;
-	height: 40px;
+	box-sizing: border-box;
+	position: static;
+	height: content-box;
 }
-.col-lg-8 {
-	float: right;
-}
+
+/*.col-lg-8 {*/
+/*	position: static;*/
+/*	box-sizing : border-box;*/
+/*	height: content-box;*/
+
+
+/*}*/
 
 /********************/
 /*     14. Team     */

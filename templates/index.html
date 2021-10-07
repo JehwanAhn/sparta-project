@@ -57,30 +57,297 @@
             data: {},
             success: function (response) {
                 let videos = response['all_videos']
-                for (let t = 0; t < videos.length; t++) {
-                    for (let i = 0; i < videos.length; i++) {
-                        let thumbnails = videos[i][t]['snippet']['thumbnails']['standard']['url']
-                        let title = videos[i][t]['snippet']['title']
-                        let channeltitle = videos[i][t]['snippet']['channelTitle']
-                        let movie = videos[i][t]['snippet']['resourceId']['videoId']
-                        console.log(thumbnails, title, channeltitle)
-                        let temp_html = `<iframe width="300px" height="200px"
-                                        src="https://www.youtube.com/embed/${movie}?rel=0&amp;loop=1;playlist=${movie}"
-                                        id="player" frameborder="0"></iframe>`
-                        $('#player').append(temp_html)
-                        let temp_html_1 =  `<div class="element-item development">
-                                                <a class="popup-with-move-anim" href="#project-1">
-                                                    <div class="element-item-overlay">
-                                                        <span>${title}</span>
-                                                    </div>
-                                                    <img class="thumbnail" scr="${thumbnails}" alt="video thumbnails"></a>
-                                            </div>`
+// 1st card
+                let thumbnails_1 = videos[0][0]['snippet']['thumbnails']['standard']['url'];
+                let title_1 = videos[0][0]['snippet']['title'];
+                let channeltitle_1 = videos[0][0]['snippet']['channelTitle'];
+                let movie_1 = videos[0][0]['snippet']['resourceId']['videoId'];
+                let link_1 = videos[0][0]['snippet']['resourceId']['videoId'];
 
-                        $('#player_1').append(temp_html_1)
+                let temp_html_1 = `<iframe width="600px" height="350px"
+                                        src="https://www.youtube.com/embed/${movie_1}?rel=0&amp;loop=1;playlist=${movie_1}"
+                                         frameborder="0"></iframe>`
+
+                let temp_html_1_1 = `<a class="popup-with-move-anim" href="#project-1">
+                                                <div class="element-item-overlay">
+                                                    <span>${title_1}</span>
+                                                </div>
+                                                <div class="text-center">
+                                                    <img src="${thumbnails_1}" alt="video thumbnails">
+                                                </div>
+                                            </a>`
+                let temp_html_1_2 = `<button title="Close (Esc)" type="button" class="mfp-close x-button">×</button>
+                                        <div >
+
+                                        </div>
+
+                                       <!-- end of col -->
+                                        <div class="col-lg-4">
+                                            <ul>
+                                                <li><h3>채널: ${channeltitle_1}</h3></li>
+                                                <li><h3>좋아요: </h3></li>
+                                            </ul>
+                                            <a class="btn-solid-reg" href="https://www.youtube.com/watch?v=${link_1}">링크</a> <a class="btn-outline-reg mfp-close as-button"
+                                                                                             href="#projects">뒤로가기</a>
+                                        </div>`
+
+                $('#player_1').append(temp_html_1)
+                $('#player_1_1').append(temp_html_1_1)
+                $('#player_1_2').append(temp_html_1_2)
+// 2th card
+                let thumbnails_2 = videos[1][0]['snippet']['thumbnails']['standard']['url'];
+                let title_2 = videos[1][0]['snippet']['title'];
+                let channeltitle_2 = videos[1][0]['snippet']['channelTitle'];
+                let movie_2 = videos[1][0]['snippet']['resourceId']['videoId'];
+                let link_2 = videos[0][0]['snippet']['resourceId']['videoId'];
 
 
-                    }
-                }
+                let temp_html_2 = `<iframe width="600px" height="350px"
+                                        src="https://www.youtube.com/embed/${movie_2}?rel=0&amp;loop=1;playlist=${movie_2}"
+                                         frameborder="0"></iframe>`
+
+                let temp_html_2_1 = `<a class="popup-with-move-anim" href="#project-2">
+                                                <div class="element-item-overlay">
+                                                    <span>${title_2}</span>
+                                                </div>
+                                                <div class="text-center">
+                                                    <img src="${thumbnails_2}" alt="video thumbnails">
+                                                </div>
+                                            </a>`
+                let temp_html_2_2 = `<button title="Close (Esc)" type="button" class="mfp-close x-button">×</button>
+                                        <div >
+
+                                        </div>
+
+                                       <!-- end of col -->
+                                        <div class="col-lg-4">
+                                            <ul>
+                                                <li>채널: ${channeltitle_2}</li>
+                                                <li><h3>좋아요: </h3></li>
+                                            </ul>
+                                            <a class="btn-solid-reg" href="https://www.youtube.com/watch?v=${link_2}">링크</a> <a class="btn-outline-reg mfp-close as-button"
+                                                                                             href="#projects">뒤로가기</a>
+                                        </div>`
+                $('#player_2').append(temp_html_2)
+                $('#player_2_1').append(temp_html_2_1)
+                $('#player_2_2').append(temp_html_2_2)
+// 3th card
+                let thumbnails_3 = videos[2][0]['snippet']['thumbnails']['standard']['url'];
+                let title_3 = videos[2][0]['snippet']['title'];
+                let channeltitle_3 = videos[2][0]['snippet']['channelTitle'];
+                let movie_3 = videos[2][0]['snippet']['resourceId']['videoId'];
+                let link_3 = videos[2][0]['snippet']['resourceId']['videoId'];
+
+                let temp_html_3 = `<iframe width="600px" height="350px"
+                                        src="https://www.youtube.com/embed/${movie_3}?rel=0&amp;loop=1;playlist=${movie_3}"
+                                         frameborder="0"></iframe>`
+
+                let temp_html_3_1 = `<a class="popup-with-move-anim" href="#project-3">
+                                                <div class="element-item-overlay">
+                                                    <span>${title_3}</span>
+                                                </div>
+                                                <div class="text-center">
+                                                    <img src="${thumbnails_3}" alt="video thumbnails">
+                                                </div>
+                                            </a>`
+
+                let temp_html_3_2 = `<button title="Close (Esc)" type="button" class="mfp-close x-button">×</button>
+                                        <div >
+
+                                        </div>
+
+                                       <!-- end of col -->
+                                        <div class="col-lg-4">
+                                            <ul>
+                                                <li><h3>채널: ${channeltitle_3}</h3></li>
+                                                <li><h3>좋아요: </h3></li>
+                                            </ul>
+                                            <a class="btn-solid-reg" href="https://www.youtube.com/watch?v=${link_3}">링크</a> <a class="btn-outline-reg mfp-close as-button"
+                                                                                             href="#projects">뒤로가기</a>
+                                        </div>`
+                $('#player_3').append(temp_html_3)
+                $('#player_3_1').append(temp_html_3_1)
+                $('#player_3_2').append(temp_html_3_2)
+// 4th card
+                let thumbnails_4 = videos[3][0]['snippet']['thumbnails']['standard']['url'];
+                let title_4 = videos[3][0]['snippet']['title'];
+                let channeltitle_4 = videos[3][0]['snippet']['channelTitle'];
+                let movie_4 = videos[3][0]['snippet']['resourceId']['videoId'];
+                let link_4 = videos[2][0]['snippet']['resourceId']['videoId'];
+
+                let temp_html_4 = `<iframe width="600px" height="350px"
+                                        src="https://www.youtube.com/embed/${movie_4}?rel=0&amp;loop=1;playlist=${movie_4}"
+                                         frameborder="0"></iframe>`
+
+                let temp_html_4_1 = `<a class="popup-with-move-anim" href="#project-4">
+                                                <div class="element-item-overlay">
+                                                    <span>${title_4}</span>
+                                                </div>
+                                                <div class="text-center">
+                                                    <img src="${thumbnails_4}" alt="video thumbnails">
+                                                </div>
+                                            </a>`
+                let temp_html_4_2 = `<button title="Close (Esc)" type="button" class="mfp-close x-button">×</button>
+                                        <div >
+
+                                        </div>
+
+                                       <!-- end of col -->
+                                        <div class="col-lg-4">
+                                            <ul>
+                                                <li><h3>채널: ${channeltitle_4}</h3></li>
+                                                <li><h3>좋아요: </h3></li>
+                                            </ul>
+                                            <a class="btn-solid-reg" href="https://www.youtube.com/watch?v=${link_4}">링크</a> <a class="btn-outline-reg mfp-close as-button"
+                                                                                             href="#projects">뒤로가기</a>
+                                        </div>`
+                $('#player_4').append(temp_html_4)
+                $('#player_4_1').append(temp_html_4_1)
+                $('#player_4_2').append(temp_html_4_2)
+// 5th card
+                let thumbnails_5 = videos[4][0]['snippet']['thumbnails']['standard']['url'];
+                let title_5 = videos[4][0]['snippet']['title'];
+                let channeltitle_5 = videos[4][0]['snippet']['channelTitle'];
+                let movie_5 = videos[4][0]['snippet']['resourceId']['videoId'];
+                let link_5 = videos[2][0]['snippet']['resourceId']['videoId'];
+
+                let temp_html_5 = `<iframe width="600px" height="350px"
+                                        src="https://www.youtube.com/embed/${movie_5}?rel=0&amp;loop=1;playlist=${movie_5}"
+                                         frameborder="0"></iframe>`
+
+                let temp_html_5_1 = `<a class="popup-with-move-anim" href="#project-5">
+                                                <div class="element-item-overlay">
+                                                    <span>${title_5}</span>
+                                                </div>
+                                                <div class="text-center">
+                                                    <img src="${thumbnails_5}" alt="video thumbnails">
+                                                </div>
+                                            </a>`
+                let temp_html_5_2 = `<button title="Close (Esc)" type="button" class="mfp-close x-button">×</button>
+                                        <div >
+
+                                        </div>
+
+                                       <!-- end of col -->
+                                        <div class="col-lg-4">
+                                            <ul>
+                                                <li><h3>채널: ${channeltitle_5}</h3></li>
+                                                <li><h3>좋아요: </h3></li>
+                                            </ul>
+                                            <a class="btn-solid-reg" href="https://www.youtube.com/watch?v=${link_5}">링크</a> <a class="btn-outline-reg mfp-close as-button"
+                                                                                             href="#projects">뒤로가기</a>
+                                        </div>`
+                $('#player_5').append(temp_html_5)
+                $('#player_5_1').append(temp_html_5_1)
+                $('#player_5_2').append(temp_html_5_2)
+// 6th card
+                let thumbnails_6 = videos[5][0]['snippet']['thumbnails']['standard']['url'];
+                let title_6 = videos[5][0]['snippet']['title'];
+                let channeltitle_6 = videos[5][0]['snippet']['channelTitle'];
+                let movie_6 = videos[5][0]['snippet']['resourceId']['videoId'];
+                let link_6 = videos[2][0]['snippet']['resourceId']['videoId'];
+
+                let temp_html_6 = `<iframe width="600px" height="350px"
+                                        src="https://www.youtube.com/embed/${movie_6}?rel=0&amp;loop=1;playlist=${movie_6}"
+                                         frameborder="0"></iframe>`
+
+                let temp_html_6_1 = `<a class="popup-with-move-anim" href="#project-6">
+                                                <div class="element-item-overlay">
+                                                    <span>${title_6}</span>
+                                                </div>
+                                                <div class="text-center">
+                                                    <img src="${thumbnails_6}" alt="video thumbnails">
+                                                </div>
+                                            </a>`
+                let temp_html_6_2 = `<button title="Close (Esc)" type="button" class="mfp-close x-button">×</button>
+                                        <div >
+
+                                        </div>
+
+                                       <!-- end of col -->
+                                        <div class="col-lg-4">
+                                            <ul>
+                                                <li><h3>채널: ${channeltitle_6}</h3></li>
+                                                <li><h3>좋아요: </h3></li>
+                                            </ul>
+                                            <a class="btn-solid-reg" href="https://www.youtube.com/watch?v=${link_6}">링크</a> <a class="btn-outline-reg mfp-close as-button"
+                                                                                             href="#projects">뒤로가기</a>
+                                        </div>`
+                $('#player_6').append(temp_html_6)
+                $('#player_6_1').append(temp_html_6_1)
+                $('#player_6_2').append(temp_html_6_2)
+// 7th card
+                let thumbnails_7 = videos[6][0]['snippet']['thumbnails']['standard']['url'];
+                let title_7 = videos[6][0]['snippet']['title'];
+                let channeltitle_7 = videos[6][0]['snippet']['channelTitle'];
+                let movie_7 = videos[6][0]['snippet']['resourceId']['videoId'];
+                let link_7 = videos[2][0]['snippet']['resourceId']['videoId'];
+
+                let temp_html_7 = `<iframe width="600px" height="350px"
+                                        src="https://www.youtube.com/embed/${movie_7}?rel=0&amp;loop=1;playlist=${movie_7}"
+                                         frameborder="0"></iframe>`
+
+                let temp_html_7_1 = `<a class="popup-with-move-anim" href="#project-7">
+                                                <div class="element-item-overlay">
+                                                    <span>${title_7}</span>
+                                                </div>
+                                                <div class="text-center">
+                                                    <img src="${thumbnails_7}" alt="video thumbnails">
+                                                </div>
+                                            </a>`
+                let temp_html_7_2 = `<button title="Close (Esc)" type="button" class="mfp-close x-button">×</button>
+                                        <div >
+
+                                        </div>
+
+                                       <!-- end of col -->
+                                        <div class="col-lg-4">
+                                            <ul>
+                                                <li><h3>채널: ${channeltitle_7}</h3></li>
+                                                <li><h3>좋아요: </h3></li>
+                                            </ul>
+                                            <a class="btn-solid-reg" href="https://www.youtube.com/watch?v=${link_7}">링크</a> <a class="btn-outline-reg mfp-close as-button"
+                                                                                             href="#projects">뒤로가기</a>
+                                        </div>`
+                $('#player_7').append(temp_html_7)
+                $('#player_7_1').append(temp_html_7_1)
+                $('#player_7_2').append(temp_html_7_2)
+// 8th card
+                let thumbnails_8 = videos[7][0]['snippet']['thumbnails']['standard']['url'];
+                let title_8 = videos[7][0]['snippet']['title'];
+                let channeltitle_8 = videos[7][0]['snippet']['channelTitle'];
+                let movie_8 = videos[7][0]['snippet']['resourceId']['videoId'];
+                let link_8 = videos[2][0]['snippet']['resourceId']['videoId'];
+
+                let temp_html_8 = `<iframe width="600px" height="350px"
+                                        src="https://www.youtube.com/embed/${movie_8}?rel=0&amp;loop=1;playlist=${movie_8}"
+                                         frameborder="0"></iframe>`
+
+                let temp_html_8_1 = `<a class="popup-with-move-anim" href="#project-8">
+                                                <div class="element-item-overlay">
+                                                    <span>${title_8}</span>
+                                                </div>
+                                                <div class="text-center">
+                                                    <img src="${thumbnails_8}" alt="video thumbnails">
+                                                </div>
+                                            </a>`
+                let temp_html_8_2 = `<button title="Close (Esc)" type="button" class="mfp-close x-button">×</button>
+                                        <div >
+
+                                        </div>
+
+                                       <!-- end of col -->
+                                        <div class="col-lg-4">
+                                            <ul>
+                                                <li><h3>채널: ${channeltitle_8}</h3></li>
+                                                <li><h3>좋아요: </h3></li>
+                                            </ul>
+                                            <a class="btn-solid-reg" href="https://www.youtube.com/watch?v=${link_8}">링크</a> <a class="btn-outline-reg mfp-close as-button"
+                                                                                             href="#projects">뒤로가기</a>
+                                        </div>`
+                $('#player_8').append(temp_html_8)
+                $('#player_8_1').append(temp_html_8_1)
+                $('#player_8_2').append(temp_html_8_2)
             }
         });
     </script>
@@ -105,7 +372,7 @@
     <!-- <a class="navbar-brand logo-text page-scroll" href="index.html">Aria</a> -->
 
     <!-- Image Logo -->
-    <a class="navbar-brand logo-image" href="body"> <img src="../static/images/vvv.png" alt="alternative"></a>
+    <a class="navbar-brand logo-image" href="52.78.14.172:5000"> <img src="../static/images/vvv.png" alt="alternative"></a>
 
     <!-- Mobile Menu Toggle Button -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
@@ -152,7 +419,6 @@
 <!-- end of header -->
 
 
-<!-- Projects -->
 <div id="projects" class="filter">
     <div class="container">
         <div class="row">
@@ -167,242 +433,192 @@
                 <!-- Filter -->
                 <div class="button-group filters-button-group">
                     <a class="button is-checked" data-filter="*"><span>10분안에 보고싶어요!</span></a>
-                    <a class="button" data-filter=".design"><span>30분안에 보고싶어요!</span></a>
+                    <a class="button" data-filter=".development"><span>30분안에 보고싶어요!</span></a>
                     <a class="button" data-filter=".development"><span>1시간안에 보고싶어요!</span></a>
                     <a class="button" data-filter=".development"><span>1시간도 더 볼 수 있어요!</span></a>
+                </div>
 
-                </div> <!-- end of button group -->
+
+<!-- end of button group -->
                 <div class="grid">
-                    <div class="element-item development" id="player_1">
-                        <a class="popup-with-move-anim" href="#project-1">
-                            <div class="element-item-overlay">
-                                <span>$title</span>
-                            </div>
-                            <img class="thumbnail" alt="video thumbnails"></a>
+                    <div class="element-item development">
+                        <a class="popup-with-move-anim" id="player_1_1" href="#project-1">
+                        </a>
+                    </div>
+                    <div class="element-item development">
+                        <a class="popup-with-move-anim" id="player_2_1" href="#project-2">
+                        </a>
+                    </div>
+                    <div class="element-item development">
+                        <a class="popup-with-move-anim" id="player_3_1" href="#project-3">
+                        </a>
+                    </div>
+                    <div class="element-item development">
+                        <a class="popup-with-move-anim" id="player_4_1" href="#project-4">
+                        </a>
+                    </div>
+                    <div class="element-item development">
+                        <a class="popup-with-move-anim" id="player_5_1" href="#project-5">
+                        </a>
+                    </div>
+                    <div class="element-item development">
+                        <a class="popup-with-move-anim" id="player_6_1" href="#project-6">
+                        </a>
+                    </div>
+                    <div class="element-item development">
+                        <a class="popup-with-move-anim" id="player_7_1" href="#project-7">
+                        </a>
+                    </div>
+                    <div class="element-item development">
+                        <a class="popup-with-move-anim" id="player_8_1" href="#project-8">
+                        </a>
                     </div>
 
-                </div> <!-- end of grid -->
-                <!-- end of filter -->
 
-            </div> <!-- end of col -->
-        </div> <!-- end of row -->
-    </div> <!-- end of container -->
-</div> <!-- end of filter -->
-<!-- end of projects -->
+                </div>
+<!--                <!— end of grid —>-->
+<!--                <!— end of filter —>-->
+
+            </div>
+<!--            <!— end of col —>-->
+        </div>
+<!--        <!— end of row —>-->
+    </div>
+<!--    <!— end of container —>-->
+</div>
+<!--&lt;!&ndash;원본&ndash;&gt;-->
+<!--&lt;!&ndash; Projects &ndash;&gt;-->
+<!--<div id="projects" class="filter">-->
+<!--    <div class="container">-->
+<!--        <div class="row">-->
+<!--            <div class="col-lg-12">-->
+<!--                <h2>-->
+<!--                    <div class="test">당신의 시간을 선택해주세요!</div>-->
+<!--                </h2>-->
+<!--            </div> &lt;!&ndash; end of col &ndash;&gt;-->
+<!--        </div> &lt;!&ndash; end of row &ndash;&gt;-->
+<!--        <div class="row">-->
+<!--            <div class="col-lg-12">-->
+<!--                &lt;!&ndash; Filter &ndash;&gt;-->
+<!--                <div class="button-group filters-button-group">-->
+<!--                    <a class="button is-checked" data-filter="*"><span>10분안에 보고싶어요!</span></a>-->
+<!--                    <a class="button" data-filter=".design"><span>30분안에 보고싶어요!</span></a>-->
+<!--                    <a class="button" data-filter=".development"><span>1시간안에 보고싶어요!</span></a>-->
+<!--                    <a class="button" data-filter=".development"><span>1시간도 더 볼 수 있어요!</span></a>-->
+
+<!--                </div> &lt;!&ndash; end of button group &ndash;&gt;-->
+<!--                <div class="grid">-->
+<!--                    <div class="element-item development">-->
+<!--                        <a class="popup-with-move-anim" id="player_1" href="#project-1">-->
+<!--                            <div class="element-item-overlay">-->
+<!--                                <span></span>-->
+<!--                            </div>-->
+<!--                            <img src="" alt="video thumbnails">-->
+<!--                        </a>-->
+<!--                    </div>-->
+<!--                    <div class="element-item development" style="position: absolute; left: 277px; top: 0px;"><a-->
+<!--                            class="popup-with-move-anim" href="#project-2">-->
+<!--                        <div class="element-item-overlay"><span>Classic Industry</span></div>-->
+<!--                        <img src="../static/images/project-2.jpg" alt="website template image"></a>-->
+<!--                    </div>-->
+<!--                    <div class="element-item development">-->
+<!--                        <a class="popup-with-move-anim"  href="#project-1">-->
+<!--                            <div class="element-item-overlay">-->
+<!--                                <span></span>-->
+<!--                            </div>-->
+<!--                            <img src="" alt="video thumbnails">-->
+<!--                        </a>-->
+<!--                    </div>-->
+
+<!--                </div> &lt;!&ndash; end of grid &ndash;&gt;-->
+<!--                &lt;!&ndash; end of filter &ndash;&gt;-->
+
+<!--            </div> &lt;!&ndash; end of col &ndash;&gt;-->
+<!--        </div> &lt;!&ndash; end of row &ndash;&gt;-->
+<!--    </div> &lt;!&ndash; end of container &ndash;&gt;-->
+<!--</div> &lt;!&ndash; end of filter &ndash;&gt;-->
+<!--&lt;!&ndash; end of projects &ndash;&gt;-->
 
 
 <!-- Project Lightboxes -->
 <!-- Lightbox -->
 <div id="project-1" class="lightbox-basic zoom-anim-dialog mfp-hide">
-    <div class="row">
-        <button title="Close (Esc)" type="button" class="mfp-close x-button">×</button>
-        <div class="col-lg-4">
-            <h3>$title</h3>
-        </div>
+    <div class="row" id="player_1_2">
         <div class="col-lg-8">
-            <div id="player"></div>
+            <div id="player_1"></div>
         </div>
-        <!-- end of col -->
-        <div>
-            <ul>
-                <li class="subscripts">좋아요: 개</li>
-                <li class="viewcount">조회수: 회</li>
-            </ul>
-
-        </div>
-        <a class="btn-solid-reg" href="#your-link">링크</a> <a class="btn-outline-reg mfp-close as-button"
-                                                             href="#projects">뒤로가기</a>
-    </div> <!-- end of col -->
-</div> <!-- end of row -->
-</div> <!-- end of lightbox-basic -->
+    </div>
+</div>
+ <!-- end of lightbox-basic -->
 <!-- end of lightbox -->
 
 <!-- Lightbox -->
 <div id="project-2" class="lightbox-basic zoom-anim-dialog mfp-hide">
-    <div class="row">
-        <button title="Close (Esc)" type="button" class="mfp-close x-button">×</button>
+    <div class="row" id="player_2_2">
         <div class="col-lg-8">
-            <img class="img-fluid" src="../static/images/project-2.jpg" alt="alternative">
-        </div> <!-- end of col -->
-        <div class="col-lg-4">
-            <h3>Classic Industry</h3>
-            <hr class="line-heading">
-            <h6>Strategy Development</h6>
-            <p>Need a solid foundation for your business growth plans? Aria will help you manage sales and meet your
-                current needs</p>
-            <p>By offering the best professional services and quality products in the market. Don't hesitate and get in
-                touch with us.</p>
-            <div class="testimonial-container">
-                <p class="testimonial-text">Need a solid foundation for your business growth plans? Aria will help you
-                    manage sales and meet your current requirements.</p>
-                <p class="testimonial-author">General Manager</p>
-            </div>
-            <a class="btn-solid-reg" href="#your-link">DETAILS</a> <a class="btn-outline-reg mfp-close as-button"
-                                                                      href="#projects">BACK</a>
-        </div> <!-- end of col -->
-    </div> <!-- end of row -->
+            <div id="player_2"></div>
+        </div>
+    </div>
 </div> <!-- end of lightbox-basic -->
 <!-- end of lightbox -->
 
 <!-- Lightbox -->
 <div id="project-3" class="lightbox-basic zoom-anim-dialog mfp-hide">
-    <div class="row">
-        <button title="Close (Esc)" type="button" class="mfp-close x-button">×</button>
+    <div class="row" id="player_3_2">
         <div class="col-lg-8">
-            <img class="img-fluid" src="../static/images/project-3.jpg" alt="alternative">
-        </div> <!-- end of col -->
-        <div class="col-lg-4">
-            <h3>BoomBap Audio</h3>
-            <hr class="line-heading">
-            <h6>Strategy Development</h6>
-            <p>Need a solid foundation for your business growth plans? Aria will help you manage sales and meet your
-                current needs</p>
-            <p>By offering the best professional services and quality products in the market. Don't hesitate and get in
-                touch with us.</p>
-            <div class="testimonial-container">
-                <p class="testimonial-text">Need a solid foundation for your business growth plans? Aria will help you
-                    manage sales and meet your current requirements.</p>
-                <p class="testimonial-author">General Manager</p>
-            </div>
-            <a class="btn-solid-reg" href="#your-link">DETAILS</a> <a class="btn-outline-reg mfp-close as-button"
-                                                                      href="#projects">BACK</a>
-        </div> <!-- end of col -->
-    </div> <!-- end of row -->
+            <div id="player_3"></div>
+        </div>
+    </div>
 </div> <!-- end of lightbox-basic -->
 <!-- end of lightbox -->
 
 <!-- Lightbox -->
 <div id="project-4" class="lightbox-basic zoom-anim-dialog mfp-hide">
-    <div class="row">
-        <button title="Close (Esc)" type="button" class="mfp-close x-button">×</button>
+    <div class="row" id="player_4_2">
         <div class="col-lg-8">
-            <img class="img-fluid" src="../static/images/project-4.jpg" alt="alternative">
-        </div> <!-- end of col -->
-        <div class="col-lg-4">
-            <h3>Van Moose</h3>
-            <hr class="line-heading">
-            <h6>Strategy Development</h6>
-            <p>Need a solid foundation for your business growth plans? Aria will help you manage sales and meet your
-                current needs</p>
-            <p>By offering the best professional services and quality products in the market. Don't hesitate and get in
-                touch with us.</p>
-            <div class="testimonial-container">
-                <p class="testimonial-text">Need a solid foundation for your business growth plans? Aria will help you
-                    manage sales and meet your current requirements.</p>
-                <p class="testimonial-author">General Manager</p>
-            </div>
-            <a class="btn-solid-reg" href="#your-link">DETAILS</a> <a class="btn-outline-reg mfp-close as-button"
-                                                                      href="#projects">BACK</a>
-        </div> <!-- end of col -->
-    </div> <!-- end of row -->
+            <div id="player_4"></div>
+        </div>
+    </div>
 </div> <!-- end of lightbox-basic -->
 <!-- end of lightbox -->
 
 <!-- Lightbox -->
 <div id="project-5" class="lightbox-basic zoom-anim-dialog mfp-hide">
-    <div class="row">
-        <button title="Close (Esc)" type="button" class="mfp-close x-button">×</button>
+    <div class="row" id="player_5_2">
         <div class="col-lg-8">
-            <img class="img-fluid" src="../static/images/project-5.jpg" alt="alternative">
-        </div> <!-- end of col -->
-        <div class="col-lg-4">
-            <h3>Joy Moments</h3>
-            <hr class="line-heading">
-            <h6>Strategy Development</h6>
-            <p>Need a solid foundation for your business growth plans? Aria will help you manage sales and meet your
-                current needs</p>
-            <p>By offering the best professional services and quality products in the market. Don't hesitate and get in
-                touch with us.</p>
-            <div class="testimonial-container">
-                <p class="testimonial-text">Need a solid foundation for your business growth plans? Aria will help you
-                    manage sales and meet your current requirements.</p>
-                <p class="testimonial-author">General Manager</p>
-            </div>
-            <a class="btn-solid-reg" href="#your-link">DETAILS</a> <a class="btn-outline-reg mfp-close as-button"
-                                                                      href="#projects">BACK</a>
-        </div> <!-- end of col -->
-    </div> <!-- end of row -->
+            <div id="player_5"></div>
+        </div>
+    </div>
 </div> <!-- end of lightbox-basic -->
 <!-- end of lightbox -->
 
 <!-- Lightbox -->
 <div id="project-6" class="lightbox-basic zoom-anim-dialog mfp-hide">
-    <div class="row">
-        <button title="Close (Esc)" type="button" class="mfp-close x-button">×</button>
+    <div class="row" id="player_6_2">
         <div class="col-lg-8">
-            <img class="img-fluid" src="../static/images/project-6.jpg" alt="alternative">
-        </div> <!-- end of col -->
-        <div class="col-lg-4">
-            <h3>Spark Events</h3>
-            <hr class="line-heading">
-            <h6>Strategy Development</h6>
-            <p>Need a solid foundation for your business growth plans? Aria will help you manage sales and meet your
-                current needs</p>
-            <p>By offering the best professional services and quality products in the market. Don't hesitate and get in
-                touch with us.</p>
-            <div class="testimonial-container">
-                <p class="testimonial-text">Need a solid foundation for your business growth plans? Aria will help you
-                    manage sales and meet your current requirements.</p>
-                <p class="testimonial-author">General Manager</p>
-            </div>
-            <a class="btn-solid-reg" href="#your-link">DETAILS</a> <a class="btn-outline-reg mfp-close as-button"
-                                                                      href="#projects">BACK</a>
-        </div> <!-- end of col -->
-    </div> <!-- end of row -->
+            <div id="player_6"></div>
+        </div>
+    </div>
 </div> <!-- end of lightbox-basic -->
 <!-- end of lightbox -->
 
 <!-- Lightbox -->
 <div id="project-7" class="lightbox-basic zoom-anim-dialog mfp-hide">
-    <div class="row">
-        <button title="Close (Esc)" type="button" class="mfp-close x-button">×</button>
+    <div class="row" id="player_7_2">
         <div class="col-lg-8">
-            <img class="img-fluid" src="../static/images/project-7.jpg" alt="alternative">
-        </div> <!-- end of col -->
-        <div class="col-lg-4">
-            <h3>Casual Wear</h3>
-            <hr class="line-heading">
-            <h6>Strategy Development</h6>
-            <p>Need a solid foundation for your business growth plans? Aria will help you manage sales and meet your
-                current needs</p>
-            <p>By offering the best professional services and quality products in the market. Don't hesitate and get in
-                touch with us.</p>
-            <div class="testimonial-container">
-                <p class="testimonial-text">Need a solid foundation for your business growth plans? Aria will help you
-                    manage sales and meet your current requirements.</p>
-                <p class="testimonial-author">General Manager</p>
-            </div>
-            <a class="btn-solid-reg" href="#your-link">DETAILS</a> <a class="btn-outline-reg mfp-close as-button"
-                                                                      href="#projects">BACK</a>
-        </div> <!-- end of col -->
-    </div> <!-- end of row -->
+            <div id="player_7"></div>
+        </div>
+    </div>
 </div> <!-- end of lightbox-basic -->
 <!-- end of lightbox -->
 
 <!-- Lightbox -->
 <div id="project-8" class="lightbox-basic zoom-anim-dialog mfp-hide">
-    <div class="row">
-        <button title="Close (Esc)" type="button" class="mfp-close x-button">×</button>
+    <div class="row" id="player_8_2">
         <div class="col-lg-8">
-            <img class="img-fluid" src="../static/images/project-8.jpg" alt="alternative">
-        </div> <!-- end of col -->
-        <div class="col-lg-4">
-            <h3>Zazoo Apps</h3>
-            <hr class="line-heading">
-            <h6>Strategy Development</h6>
-            <p>Need a solid foundation for your business growth plans? Aria will help you manage sales and meet your
-                current needs</p>
-            <p>By offering the best professional services and quality products in the market. Don't hesitate and get in
-                touch with us.</p>
-            <div class="testimonial-container">
-                <p class="testimonial-text">Need a solid foundation for your business growth plans? Aria will help you
-                    manage sales and meet your current requirements.</p>
-                <p class="testimonial-author">General Manager</p>
-            </div>
-            <a class="btn-solid-reg" href="#your-link">DETAILS</a> <a class="btn-outline-reg mfp-close as-button"
-                                                                      href="#projects">BACK</a>
-        </div> <!-- end of col -->
-    </div> <!-- end of row -->
+            <div id="player_8"></div>
+        </div>
+    </div>
 </div> <!-- end of lightbox-basic -->
 <!-- end of lightbox -->
 <!-- end of project lightboxes -->
